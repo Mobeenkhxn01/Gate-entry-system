@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Save Web Form Data to Spreadsheets</title>
+	<link href="./output.css" rel="stylesheet">
+
+	<script
+		src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script>
+	<script>
+		function SubForm (){
+			$.ajax({
+				url:"https://api.apispreadsheets.com/data/V66L7KXBcTJ7O9Es/",
+				type:"post",
+				data:$("#myForm").serializeArray(),
+				success: function(){
+					alert("Form Data Submitted :)")
+				},
+				error: function(){
+					alert("There was an error :(")
+				}
+			});
+		}
+	</script>
+</head>
+<body class=" ">
+	<main class="bg-[url('./bg2.jpg')] flex min-h-screen flex-col items-center justify-between p-24  ">
+		<div class="bg-[url('./bg.jpg')] z-10 w-full max-w-5xl items-center justify-between font-sans text-sm lg:flex">
+			<div class="w-full h-screen flex justify-center items-center border-black border-solid border-2 p-4 m-0 flex-col gap-4 ">
+			<h1 class="font-semibold text-4xl font-serif">
+				Gate Entry System
+			</h1>
+			<div class=" flex justify-center items-center ">
+				<form class=" w-96 flex justify-center items-start border-solid border-2 border-black flex-col gap-2 p-4 relative left-0 " id="myForm">
+				<div class="flex flex-col w-80">
+					<label class="text-xl">Name:</label>
+					<input class="border-gray-950 border-solid border-2 p-2 rounded-xl" name="Name"  placeholder="Name"/>
+				</div>
+				<br/>
+				<div class="flex flex-col w-80">
+					<label class="text-xl">Purpose:</label>
+					<input class="border-gray-950 border-solid border-2 p-2 rounded-xl" name="Purpose" placeholder="Purpose" />
+				</div>
+				<br/>
+				<div class="flex flex-col w-80">
+					<label class="text-xl">Type:</label>  
+                    <select class="border-gray-950 border-solid border-2 p-2 rounded-xl" name="Type" placeholder="Type" >  
+                       <option value = "Employee"> Employee   
+                       </option>  
+                       <option value = "Trainee"> Trainee   
+                       </option>  
+                       <option value = "Visitor"> Visitor  
+                       </option>  
+                    </select>
+				</div>
+				<br/>
+				<div class="flex flex-col w-80">
+					<label class="text-xl">Entry Time:</label>
+					<input class="border-solid border-gray-950 border-2 p-2 rounded-xl" name="Entry Time" aria-label="Date and time" type="datetime-local" />
+				</div>
+				
+				<br/>
+				<div class="flex flex-col w-80">
+					<label class="text-xl">Exit Time:</label>
+					<input class="border-gray-950 border-solid border-2 p-2 rounded-xl" name="Exit Time" aria-label="Date and time" type="datetime-local"/>
+				</div>
+				<br/>
+				
+			</form>
+			</div>
+			
+			<button class="bg-blue-600 w-80 h-10 border-gray-800 border-solid border-2 rounded-full " onclick='SubForm()'>Submit</button>
+		</div> 
+		</div>
+	</main>
+
+	
+</body>
+</html>
